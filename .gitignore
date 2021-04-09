@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+# C extensions
+*.so
+output.log
+data/db
+data/db.unittest
+*.bk
+*.map
+cached/*.html
+!cached/index.html
+.env

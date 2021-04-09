@@ -1,0 +1,52 @@
+version: '3.5'
+services:
+  target-project:
+    container_name: target-project
+    build:
+      context: ${TARGET_PROJECT_DIR}
+      dockerfile: Dockerfile.autotest
+    ports:
+      - 80:80
+    tty: true
+    networks:
+      - app-network
+
+  automation-worker:
+    container_name: automation-worker
+    build:
+      context: .
+      dockerfile: docker/automation-worker/Dockerfile
+      args:
+        - TARGET_PROJECT_DIR=${TARGET_PROJECT_DIR}
+    depends_on:
+      - selenium-hub
+    command: ["./scripts/wait-for-it.sh", "target-project:80", "--", "./scripts/run_unittest.sh"]
+    tty: true
+    volumes:
+      - ./testcases:/sango/testcases
+    networks:
+      - app-network
+
+  selenium-hub:
+    image: selenium/hub:3.141.59-20200409
+    container_name: selenium-hub
+    networks:
+      - app-network
+    ports:
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome:3.141.59-20200409
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    networks:
+      - app-network
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+networks:
+  app-network:
+    driver: bridge
