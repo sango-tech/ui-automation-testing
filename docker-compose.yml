@@ -19,7 +19,7 @@ services:
       - 8081:8081
 
   selenium-hub:
-    image: selenium/hub:3.141.59-20200409
+    image: selenium/hub:4.0.0-beta-3-prerelease-20210402
     container_name: selenium-hub
     networks:
       - app-network
