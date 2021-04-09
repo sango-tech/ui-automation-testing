@@ -30,6 +30,11 @@ class TestPageNotFound(BaseTestCase):
 ```
 
 ### RUN
-```
+
+```bash
 $ make test
+
+
+# Fast write testcase, no need build container again
+$ make test-nobuild
 ```
