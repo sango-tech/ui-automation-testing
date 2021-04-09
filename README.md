@@ -5,11 +5,13 @@ This tool is writing by Python and Docker compose.
 
 ### Structor
 
+```
 YOUR-PROJECT-DIR
 ├── automation-ui-testcases
 │   └── test_page_not_found.py
 │   └── test_something_else.py
 
+```
 
 ### Run your app
 
