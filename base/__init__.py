@@ -51,7 +51,6 @@ class BaseTestCase(unittest.TestCase):
 
     def set_driver(self):
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--ignore-ssl-errors=yes')
         chrome_options.add_argument('--ignore-certificate-errors')
         chrome_options.add_experimental_option("mobileEmulation", self.get_device_emulation())
 
