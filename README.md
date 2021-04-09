@@ -3,6 +3,14 @@
 Automation UI test is combined from Selenium + Python Unit test. This help you can set your testing scenario.
 This tool is writing by Python and Docker compose.
 
+### Structor
+
+YOUR-PROJECT-DIR
+├── automation-ui-testcases
+│   └── test_page_not_found.py
+│   └── test_something_else.py
+
+
 ### Run your app
 
 Run your webapp first, then check your local IP if you are on local. Or directly testing on a live webapp (e.i https://my-live-website.com).
