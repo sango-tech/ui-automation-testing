@@ -12,3 +12,4 @@ data/db.unittest
 cached/*.html
 !cached/index.html
 .env
+testcases

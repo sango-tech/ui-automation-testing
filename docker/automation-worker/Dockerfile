@@ -1,8 +1,5 @@
 FROM python:3.7
 
-# Target testing directory (i.e /usr/home/my-vuejs-project)
-ARG TARGET_PROJECT_DIR
-
 WORKDIR /sango
 ADD docker/automation-worker/requirements.txt /usr/requirements.txt
 

@@ -1,31 +1,22 @@
 version: '3.5'
 services:
-  target-project:
-    container_name: target-project
-    build:
-      context: ${TARGET_PROJECT_DIR}
-      dockerfile: Dockerfile.autotest
-    ports:
-      - 80:80
-    tty: true
-    networks:
-      - app-network
-
   automation-worker:
     container_name: automation-worker
     build:
       context: .
       dockerfile: docker/automation-worker/Dockerfile
-      args:
-        - TARGET_PROJECT_DIR=${TARGET_PROJECT_DIR}
     depends_on:
       - selenium-hub
-    command: ["./scripts/wait-for-it.sh", "target-project:80", "--", "./scripts/run_unittest.sh"]
+    command: ["./scripts/wait-for-it.sh", "selenium-hub:4444", "--", "./scripts/run_unittest.sh"]
     tty: true
     volumes:
       - ./testcases:/sango/testcases
+    env_file:
+      - .env
     networks:
       - app-network
+    ports:
+      - 8081:8081
 
   selenium-hub:
     image: selenium/hub:3.141.59-20200409
