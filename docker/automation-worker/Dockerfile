@@ -10,7 +10,6 @@ RUN pip install --upgrade pip
 RUN pip install -r /usr/requirements.txt
 
 COPY . .
-COPY ${TARGET_PROJECT_DIR}/automation-ui-testcases/test_*.py ./testcases
 
 RUN useradd -ms /bin/bash sango
 RUN chown -R sango:sango /sango

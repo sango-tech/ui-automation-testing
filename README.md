@@ -12,6 +12,7 @@ $ cp docker/target/Dockerfile <YOUR-PROJECT-DIR>/Dockerfile.autotest
 
 - `$ mkdir automation-ui-testcases` on `YOUR-PROJECT-DIR`
 - Create your test case on `automation-ui-testcases/test_*.py`
+- `ln -s YOUR-PROJECT-DIR/automation-ui-testcases/test_*.py ./testcases`
 
 Sample test code
 
